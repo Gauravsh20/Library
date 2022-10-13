@@ -1,5 +1,6 @@
-<%@page import="com.Infinite.LibraryProject.LibraryDAO"%>
-<%@page import="com.Infinite.LibraryProject.TranBook"%>
+
+<%@page import="com.Training.Library.LibraryDAO"%>
+<%@page import="com.Training.Library.TranBook"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
