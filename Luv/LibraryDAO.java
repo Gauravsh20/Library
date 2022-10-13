@@ -1,16 +1,31 @@
-package com.Infinite.LibraryProject;
+package com.Training.Library;
+
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.protobuf.Internal.BooleanList;
 
 
 public class LibraryDAO {
+	
+	// Add User
+	public String AddUser(String Username,String Password) throws ClassNotFoundException, SQLException {
+		Connection connection=ConnectionHelper.getConnection();
+		String cmd="Insert into LibUsers (Username,Password) values(?,?)"; 
+		PreparedStatement pst=connection.prepareStatement(cmd);
+		pst.setString(1, Username);
+		pst.setString(2, Password);
+		pst.executeUpdate();
+		return "Successfully";
+		
+	}
+	
+	
 	
 //Validate User;
 
@@ -26,8 +41,9 @@ public class LibraryDAO {
 		return count;
 	}
 	
-	//Search
 	
+	
+	//Search
 	
 	public List<Books>search(String searchType,String SearchValue) throws ClassNotFoundException, SQLException{
 		String sql;
@@ -66,6 +82,7 @@ public class LibraryDAO {
 		}
 		return booksList;
 	}
+	
 	//Issues books
 	
 	public String issueBook(String userName,int bookId) throws ClassNotFoundException, SQLException{
@@ -135,6 +152,7 @@ public class LibraryDAO {
 		}
 		return tranBook;
 	}
+	
 	public String returnBooks(String user,int bookId) throws ClassNotFoundException, SQLException{
 		Connection connection = ConnectionHelper.getConnection();
 		TranBook tranBook=searchTranBook(user, bookId);
@@ -178,5 +196,33 @@ public class LibraryDAO {
 		
 	}
 	
+	//Add Book
+	public String AddBook(Books book) throws ClassNotFoundException, SQLException {
+		Connection connection = ConnectionHelper.getConnection();
+		String cmd = "insert into Books(Id,Name,Author,Edition,Dept,TotalBooks)values(?,?,?,?,?,?)";
+		PreparedStatement pst = connection.prepareStatement(cmd);
+		pst.setInt(1,book.getId());
+		pst.setString(2, book.getName());
+		pst.setString(3, book.getAuthor());
+		pst.setString(4, book.getEdition());
+		pst.setString(5, book.getDept());
+		pst.setInt(6, book.getNoOfBooks());
+		pst.executeUpdate();
+		return "Add....";
+	}
 	
+//	public String addEmploy(Employ employ) 
+//			throws ClassNotFoundException, SQLException {
+//		connection = ConnectionHelper.getConnection();
+//		String cmd = "insert into Employ(name,dept,desig,basic) "
+//				+ " values(?,?,?,?)";
+//		pst = connection.prepareStatement(cmd);
+//		pst.setString(1, employ.getName());
+//		pst.setString(2, employ.getDept());
+//		pst.setString(3, employ.getDesig());
+//		pst.setInt(4, employ.getBasic());
+//		pst.executeUpdate();
+//		return "Record Inserted...";
+//	}
+//	
 }

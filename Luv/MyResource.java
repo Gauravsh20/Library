@@ -1,4 +1,4 @@
-package com.Infinite.LibraryProject;
+package com.Training.Library;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

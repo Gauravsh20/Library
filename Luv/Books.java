@@ -1,4 +1,4 @@
-package com.Infinite.LibraryProject;
+package com.Training.Library;
 
 public class Books {
 

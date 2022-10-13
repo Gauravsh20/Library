@@ -1,4 +1,4 @@
-package com.Infinite.LibraryProject;
+package com.Training.Library;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
